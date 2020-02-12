@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import Button from 'react-bootstrap/Button'
+import { Button } from 'react-bootstrap'
+import formStyle from '../form.module.css'
 
 export default class Login extends Component {
   render () {
@@ -20,12 +21,12 @@ export default class Login extends Component {
         <div className='form-group'>
           <div className='custom-control custom-checkbox'>
             <input type='checkbox' className='custom-control-input' id='customCheck1' />
-            <label className='custom-control-label' htmlFor='customCheck1'>Remember me</label>
+            <label className={formStyle.custumControlLabel} class='custom-control-label' htmlFor='customCheck1'>Remember me</label>
           </div>
         </div>
 
         <Button type='submit' className='btn btn-primary btn-block'>Submit</Button>
-        <p className='forgot-password text-right'>
+        <p className={formStyle.forgotPassword}>
                   or create an <a href='/auth/signup'>account</a>
         </p>
       </form>

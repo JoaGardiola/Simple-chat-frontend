@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import Button from 'react-bootstrap/Button'
+import { Button } from 'react-bootstrap'
+import formStyle from '../form.module.css'
+
 
 export default class SignUp extends Component {
   render () {
@@ -28,7 +30,7 @@ export default class SignUp extends Component {
         </div>
 
         <Button type='submit' className='btn btn-primary btn-block'>Sign Up</Button>
-        <p className='forgot-password text-right'>
+        <p className={formStyle.forgotPassword}>
             Already registered? <a href='/auth/signin'>sign in</a>
         </p>
       </form>

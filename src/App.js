@@ -1,6 +1,7 @@
 import React from 'react'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
-import './App.css'
+import './nav.css'
+import authStyle from './auth.module.css'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
 import SignIn from './components/signIn'
@@ -24,8 +25,8 @@ function App () {
         </div>
       </nav>
 
-      <div className='auth-wrapper'>
-        <div className='auth-inner'>
+      <div className={authStyle.authWrapper}>
+        <div className={authStyle.authInner}>
           <Switch>
             <Route exact path='/' component={SignIn} />
             <Route path='/auth/signin' component={SignIn} />
