@@ -1,39 +1,43 @@
 import React, { Component } from 'react'
-import { Button } from 'react-bootstrap'
 import formStyle from '../form.module.css'
 
+import { Button, Form } from 'react-bootstrap'
+
+import { Link } from 'react-router-dom'
 
 export default class SignUp extends Component {
   render () {
     return (
-      <form>
+      <Form>
         <h3>Sign Up</h3>
 
-        <div className='form-group'>
-          <label>First name</label>
-          <input type='text' className='form-control' placeholder='First name' />
-        </div>
+        <Form.Group controlId='formFirstname'>
+          <Form.Label>First name</Form.Label>
+          <Form.Control type='text' className='form-control' placeholder='First name' required />
+        </Form.Group>
 
-        <div className='form-group'>
-          <label>Last name</label>
-          <input type='text' className='form-control' placeholder='Last name' />
-        </div>
+        <Form.Group controlId='formLastname'>
+          <Form.Label>Last name</Form.Label>
+          <Form.Control type='text' className='form-control' placeholder='Last name' required />
+        </Form.Group>
 
-        <div className='form-group'>
-          <label>Username</label>
-          <input type='username' className='form-control' placeholder='Enter username' />
-        </div>
+        <Form.Group controlId='formUsername'>
+          <Form.Label>Username</Form.Label>
+          <Form.Control type='text' className='form-control' placeholder='Enter username' required />
+        </Form.Group>
 
-        <div className='form-group'>
-          <label>Password</label>
-          <input type='password' className='form-control' placeholder='Enter password' />
-        </div>
+        <Form.Group controlId='formPassword'>
+          <Form.Label>Password</Form.Label>
+          <Form.Control type='password' className='form-control' placeholder='Enter password' required />
+        </Form.Group>
 
-        <Button type='submit' className='btn btn-primary btn-block'>Sign Up</Button>
+        <Button type='submit' className='btn btn-primary btn-block'>
+          Sign Up
+        </Button>
         <p className={formStyle.forgotPassword}>
-            Already registered? <a href='/auth/signin'>sign in</a>
+            Already registered? <Link to='/auth/signin'>sign in</Link>
         </p>
-      </form>
+      </Form>
     )
   }
 }
