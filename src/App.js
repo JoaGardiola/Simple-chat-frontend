@@ -1,26 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import './nav.css'
+import authStyle from './auth.module.css'
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import SignIn from './components/signIn'
+import SignUp from './components/signUp'
+
+function App () {
+  return (<Router>
+    <div className='App'>
+      <nav className='navbar navbar-expand-lg navbar-light fixed-top'>
+        <div className='container'>
+          <div className='collapse navbar-collapse' id='navbarTogglerDemo02'>
+            <ul className='navbar-nav ml-auto'>
+              <li className='nav-item'>
+                <Link className='nav-link' to='/auth/signin'>Sign In</Link>
+              </li>
+              <li className='nav-item'>
+                <Link className='nav-link' to='/auth/signup'>Sign up</Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <div className={authStyle.authWrapper}>
+        <div className={authStyle.authInner}>
+          <Switch>
+            <Route exact path='/' component={SignIn} />
+            <Route path='/auth/signin' component={SignIn} />
+            <Route path='/auth/signup' component={SignUp} />
+          </Switch>
+        </div>
+      </div>
+    </div></Router>
+  )
 }
 
-export default App;
+export default App
