@@ -34,12 +34,6 @@ export default class SignUp extends Component {
         validationSchema={ValidationSchema}
         onSubmit={(values, { setSubmitting, resetForm }) => {
           setSubmitting(true)
-
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2))
-            resetForm()
-            setSubmitting(false)
-          }, 500)
         }}
       >
         {({
