@@ -45,7 +45,6 @@ export default class SignUp extends Component {
         {({
           values,
           errors,
-          isValid,
           touched,
           handleChange,
           handleSubmit,
@@ -64,9 +63,13 @@ export default class SignUp extends Component {
                 onChange={handleChange}
                 value={values.firstname}
                 isInvalid={touched.firstname && errors.firstname}
+                isValid={touched.firstname && !errors.firstname}
               />
               <Form.Control.Feedback type='invalid'>
                 {errors.firstname}
+              </Form.Control.Feedback>
+              <Form.Control.Feedback type='valid'>
+                Looks good!
               </Form.Control.Feedback>
             </Form.Group>
 
@@ -80,9 +83,13 @@ export default class SignUp extends Component {
                 onChange={handleChange}
                 value={values.lastname}
                 isInvalid={touched.lastname && errors.lastname}
+                isValid={touched.lastname && !errors.lastname}
               />
               <Form.Control.Feedback type='invalid'>
                 {errors.lastname}
+              </Form.Control.Feedback>
+              <Form.Control.Feedback type='valid'>
+                Looks good!
               </Form.Control.Feedback>
             </Form.Group>
 
@@ -96,9 +103,13 @@ export default class SignUp extends Component {
                 onChange={handleChange}
                 value={values.username}
                 isInvalid={touched.username && errors.username}
+                isValid={touched.username && !errors.username}
               />
               <Form.Control.Feedback type='invalid'>
                 {errors.username}
+              </Form.Control.Feedback>
+              <Form.Control.Feedback type='valid'>
+                Looks good!
               </Form.Control.Feedback>
             </Form.Group>
 
@@ -112,9 +123,13 @@ export default class SignUp extends Component {
                 onChange={handleChange}
                 value={values.password}
                 isInvalid={touched.password && errors.password}
+                isValid={touched.password && !errors.password}
               />
               <Form.Control.Feedback type='invalid'>
                 {errors.password}
+              </Form.Control.Feedback>
+              <Form.Control.Feedback type='valid'>
+                Looks good!
               </Form.Control.Feedback>
             </Form.Group>
 
