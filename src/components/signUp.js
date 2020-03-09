@@ -59,6 +59,7 @@ export default function SignUp () {
         setSubmitting(true)
         await signUp({ variables: { input: values } })
         resetForm()
+        setSubmitting(false)
       }}
     >
       {({
@@ -72,7 +73,7 @@ export default function SignUp () {
         <Form onSubmit={handleSubmit}>
           <h3>Sign Up</h3>
           <Alert show={show} variant='danger' onClose={() => setShow(false)} dismissible>
-              Oh snap! Something went wrong
+            Oh snap! Something went wrong
           </Alert>
           <Form.Group controlId='formFirstname'>
             <Form.Label>First name</Form.Label>
@@ -90,7 +91,7 @@ export default function SignUp () {
               {errors.firstName}
             </Form.Control.Feedback>
             <Form.Control.Feedback type='valid'>
-                Looks good!
+              Looks good!
             </Form.Control.Feedback>
           </Form.Group>
 
@@ -110,7 +111,7 @@ export default function SignUp () {
               {errors.lastName}
             </Form.Control.Feedback>
             <Form.Control.Feedback type='valid'>
-                Looks good!
+              Looks good!
             </Form.Control.Feedback>
           </Form.Group>
 
@@ -130,7 +131,7 @@ export default function SignUp () {
               {errors.username}
             </Form.Control.Feedback>
             <Form.Control.Feedback type='valid'>
-                Looks good!
+              Looks good!
             </Form.Control.Feedback>
           </Form.Group>
 
@@ -150,15 +151,15 @@ export default function SignUp () {
               {errors.password}
             </Form.Control.Feedback>
             <Form.Control.Feedback type='valid'>
-                Looks good!
+              Looks good!
             </Form.Control.Feedback>
           </Form.Group>
 
           <Button type='submit' className='btn btn-primary btn-block' disabled={isSubmitting}>
-                Sign Up
+            Sign Up
           </Button>
           <p className={formStyle.forgotPassword}>
-                  Already registered? <Link to='/auth/signin'>sign in</Link>
+            Already registered? <Link to='/auth/signin'>sign in</Link>
           </p>
         </Form>
       )}
