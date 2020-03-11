@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import formStyle from '../form.module.css'
 
-import { Button, Form } from 'react-bootstrap'
-
+import { Button, Form, Alert } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 import { Formik } from 'formik'
 import * as Yup from 'yup'
+
+import gql from 'graphql-tag'
+import { useMutation } from '@apollo/react-hooks'
 
 const ValidationSchema = Yup.object().shape({
   username: Yup.string()
@@ -19,13 +21,35 @@ const ValidationSchema = Yup.object().shape({
     .required('Required')
 })
 
-export default function signIn () {
+const SIGN_IN = gql`
+  mutation signIn($input: signInInput!) {
+    signIn(input: $input) {
+      user{
+        id
+        username
+      }
+      jwt
+    }
+  }
+`
+
+export default function SignIn () {
+  const [show, setShow] = useState(false)
+  const signInOk = ({ signUp }) => { console.log('successfully') }
+  const signInError = (error) => setShow(true)
+
+  const [signIn] = useMutation(SIGN_IN, {
+    onCompleted: signInOk,
+    onError: signInError
+  })
+
   return (
     <Formik
       initialValues={{ username: '', password: '' }}
       validationSchema={ValidationSchema}
       onSubmit={async (values, { setSubmitting, resetForm }) => {
         setSubmitting(true)
+        await signIn({ variables: { input: values } })
         resetForm()
         setSubmitting(false)
       }}
@@ -40,7 +64,9 @@ export default function signIn () {
       }) => (
         <Form onSubmit={handleSubmit}>
           <h3>Sign In</h3>
-
+          <Alert show={show} variant='danger' onClose={() => setShow(false)} dismissible>
+            Oh snap! Something went wrong
+          </Alert>
           <Form.Group controlId='formUsername'>
             <Form.Label>Username</Form.Label>
             <Form.Control
