@@ -43,7 +43,10 @@ const SIGN_UP = gql`
 
 export default function SignUp () {
   const [show, setShow] = useState(false)
-  const signUpOk = ({ signUp }) => { console.log('successfully') }
+  const signUpOk = ({ signUp }) => { 
+    console.log('success')
+    localStorage.setItem('jwt', signUp.jwt);
+  }
   const signUpError = (error) => setShow(true)
 
   const [signUp] = useMutation(SIGN_UP, {
