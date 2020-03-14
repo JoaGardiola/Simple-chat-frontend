@@ -4,7 +4,8 @@ import { useApolloClient} from '@apollo/react-hooks'
 
 
 export default function Logout () {
-  const client: ApolloClient = useApolloClient();
+
+  const client = useApolloClient();
   
   return (
     client.clearStore(), 
