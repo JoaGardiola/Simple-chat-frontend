@@ -10,7 +10,7 @@ import * as Yup from 'yup'
 import gql from 'graphql-tag'
 import { useMutation } from '@apollo/react-hooks'
 
-const ValidationSchema = Yup.object().shape({
+const validationSchema = Yup.object().shape({
   username: Yup.string()
     .min(5, 'Usernames must have more than 5 characters')
     .max(255, 'Must be shorter than 255')
@@ -46,7 +46,7 @@ export default function SignIn () {
   return (
     <Formik
       initialValues={{ username: '', password: '' }}
-      validationSchema={ValidationSchema}
+      validationSchema={validationSchema}
       onSubmit={async (values, { setSubmitting, resetForm }) => {
         setSubmitting(true)
         await signIn({ variables: { input: values } })
