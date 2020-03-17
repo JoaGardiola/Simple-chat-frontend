@@ -6,7 +6,6 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
 import SignIn from './components/signIn'
 import SignUp from './components/signUp'
-import logout from './components/logout'
 
 function App () {
   return (<Router>
@@ -21,9 +20,6 @@ function App () {
               <li className='nav-item'>
                 <Link className='nav-link' to='/auth/signup'>Sign up</Link>
               </li>
-              <li className='nav-item'>
-                <Link className='nav-link' to='/auth/logout'>logout</Link>
-              </li>
             </ul>
           </div>
         </div>
@@ -35,7 +31,6 @@ function App () {
             <Route exact path='/' component={SignIn} />
             <Route path='/auth/signin' component={SignIn} />
             <Route path='/auth/signup' component={SignUp} />
-            <Route path='/auth/logout' component={logout} />
           </Switch>
         </div>
       </div>
