@@ -2,13 +2,14 @@ import React, { useState } from 'react'
 import formStyle from '../form.module.css'
 
 import { Button, Form, Alert } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 import { Formik } from 'formik'
 import * as Yup from 'yup'
 
 import gql from 'graphql-tag'
 import { useMutation } from '@apollo/react-hooks'
+
 
 const validationSchema = Yup.object().shape({
   username: Yup.string()
@@ -35,6 +36,7 @@ const SIGN_IN = gql`
 
 export default function SignIn () {
   const [show, setShow] = useState(false)
+  const history = useHistory()
 
   const signInOk = ({ signIn }) => {
     localStorage.setItem('jwt', signIn.jwt)
@@ -57,6 +59,7 @@ export default function SignIn () {
         await signIn({ variables: { input: values } })
         resetForm()
         setSubmitting(false)
+        history.push('/auth/userData')
       }}
     >
       {({

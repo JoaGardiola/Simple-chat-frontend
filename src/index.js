@@ -9,7 +9,7 @@ import { ApolloClient } from 'apollo-boost'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { persistCache } from 'apollo-cache-persist'
 import { HttpLink } from 'apollo-link-http'
-import { ApolloLink } from 'apollo-link'
+import {ApolloLink} from 'apollo-link'
 import { ApolloProvider } from '@apollo/react-hooks'
 
 const cache = new InMemoryCache()
