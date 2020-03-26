@@ -1,15 +1,13 @@
 import React from 'react'
 
-import { useApolloClient} from '@apollo/react-hooks'
-
+import { useApolloClient } from '@apollo/react-hooks'
 
 export default function Logout () {
+  const client = useApolloClient()
 
-  const client = useApolloClient();
-  
   return (
     localStorage.clear(),
-    client.clearStore(), 
+    client.clearStore(),
     <h3>Come back soon!</h3>
   )
 }

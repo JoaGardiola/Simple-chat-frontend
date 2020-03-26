@@ -10,7 +10,6 @@ import * as Yup from 'yup'
 import gql from 'graphql-tag'
 import { useMutation } from '@apollo/react-hooks'
 
-
 const validationSchema = Yup.object().shape({
   username: Yup.string()
     .min(5, 'Usernames must have more than 5 characters')
