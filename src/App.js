@@ -6,6 +6,8 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
 import SignIn from './components/signIn'
 import SignUp from './components/signUp'
+import logout from './components/logout'
+import UserData from './components/userData'
 
 function App () {
   return (<Router>
@@ -31,6 +33,8 @@ function App () {
             <Route exact path='/' component={SignIn} />
             <Route path='/auth/signin' component={SignIn} />
             <Route path='/auth/signup' component={SignUp} />
+            <Route path='/auth/logout' component={logout} />
+            <Route path='/auth/userData' component={UserData} />
           </Switch>
         </div>
       </div>
